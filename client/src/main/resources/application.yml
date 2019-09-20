@@ -1,2 +1,9 @@
 server:
   port: 8081
+
+#registry:
+#  center:
+#    address: list://127.0.0.1:18866
+
+nettyrpc:
+  registryAddress: list://127.0.0.1:18866

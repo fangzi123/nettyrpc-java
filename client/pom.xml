@@ -19,16 +19,23 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.nettyrpc</groupId>
-            <artifactId>NettyRpc</artifactId>
+            <groupId>com.wangff</groupId>
+            <artifactId>nettyrpc-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.nettyrpc</groupId>-->
+            <!--<artifactId>NettyRpc</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.slf4j</groupId>-->
+                    <!--<artifactId>slf4j-log4j12</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

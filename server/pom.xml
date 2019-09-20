@@ -24,12 +24,16 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--rpc中间件-->
+        <!--<dependency>-->
+            <!--<groupId>com.nettyrpc</groupId>-->
+            <!--<artifactId>NettyRpc</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.nettyrpc</groupId>
-            <artifactId>NettyRpc</artifactId>
+            <groupId>com.wangff</groupId>
+            <artifactId>nettyrpc-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>

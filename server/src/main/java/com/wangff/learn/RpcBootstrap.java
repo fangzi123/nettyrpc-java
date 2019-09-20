@@ -1,10 +1,11 @@
 package com.wangff.learn;
 
+import com.nettyrpc.stater.NettyRpcClientAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {NettyRpcClientAutoConfiguration.class})
 @MapperScan("com.wangff.learn.mapper")
 public class RpcBootstrap {
 

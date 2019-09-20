@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.nettyrpc.stater.NettyRpcServerAutoConfiguration,\
+  com.nettyrpc.stater.NettyRpcClientAutoConfiguration

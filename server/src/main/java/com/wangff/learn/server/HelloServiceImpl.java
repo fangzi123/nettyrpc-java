@@ -20,7 +20,7 @@ public class HelloServiceImpl implements HelloService {
     @Override
     public String hello(String name) {
         JSONObject json = new JSONObject();
-        List<User> a=userMapper.select10();
+        List<User> a = userMapper.selectAll();
         json.put("userlist",a);
         json.put("in",name);
         return json.toJSONString();
