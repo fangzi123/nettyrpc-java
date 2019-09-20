@@ -20,7 +20,7 @@ public class TestController {
 //        HelloService helloService = RpcClient.create(HelloService.class);
         String result = helloService.hello("阿萨就撒就飒飒回家撒谎就撒回家飒飒回家撒会撒娇撒");
         System.out.println("*********************"+(System.currentTimeMillis()-start));
-        return JSON.toJSONString(result);
+        return result;
     }
 
 }
