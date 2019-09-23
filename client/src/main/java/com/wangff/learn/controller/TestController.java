@@ -1,7 +1,5 @@
 package com.wangff.learn.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.nettyrpc.client.RpcClient;
 import com.nettyrpc.client.proxy.RpcClientProxy;
 import com.wangff.learn.api.HelloService;
 import org.springframework.web.bind.annotation.RequestMapping;

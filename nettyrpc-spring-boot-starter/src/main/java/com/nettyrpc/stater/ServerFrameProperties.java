@@ -7,11 +7,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix ="nettyrpc")
 public class ServerFrameProperties {
 
-    private String registryAddress;
+    private String registryAddress="list://127.0.0.1:18080";
 
-    private String serverHost;
-    private int serverPort;
+    private String serverHost="127.0.0.1";
+    private int serverPort=18080;
 
-    private int tokenBucketSize;
-    private int tokenInputRate;
+    private int tokenBucketSize=500;
+    private int tokenInputRate=500;
 }

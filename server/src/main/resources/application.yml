@@ -25,8 +25,8 @@ pagehelper:
 nettyrpc:
   server:
       enable: true
-  registryAddress: list://127.0.0.1:18866
-  serverHost: 127.0.0.1
-  serverPort: 18866
-  tokenBucketSize: 1
-  tokenInputRate: 1
+#  registryAddress: list://127.0.0.1:18080
+#  serverHost: 127.0.0.1
+#  serverPort: 18080
+#  tokenBucketSize: 1
+#  tokenInputRate: 1
