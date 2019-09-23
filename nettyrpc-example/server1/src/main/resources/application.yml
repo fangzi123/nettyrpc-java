@@ -1,0 +1,32 @@
+spring:
+  datasource:
+      name: test
+      url: jdbc:mysql://192.168.9.240:3306/lms?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true
+      username: lms
+      password: lmsZdWI1o
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.wangff.learn.model
+  mapper-locations: classpath:mapper/**/*.xml
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+nettyrpc:
+  server:
+      enable: true
+#  registryAddress: list://127.0.0.1:18080
+#  serverHost: 127.0.0.1
+#  serverPort: 18080
+#  tokenBucketSize: 1
+#  tokenInputRate: 1
