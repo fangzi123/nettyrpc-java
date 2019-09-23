@@ -13,7 +13,7 @@
 
     <modules>
         <module>api</module>
-        <module>server</module>
         <module>client</module>
+        <module>server</module>
     </modules>
 </project>
