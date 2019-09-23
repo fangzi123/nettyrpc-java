@@ -6,6 +6,7 @@ import com.nettyrpc.server.RpcServerOptions;
 import com.nettyrpc.server.currentlimit.CurrentLimiter;
 import com.nettyrpc.server.currentlimit.TokenBucketCurrentLimiter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import java.util.List;
  * @date 2019/9/20 16:09
  */
 @Configuration
+@ConditionalOnProperty(prefix = "nettyrpc.server", name = "enable", havingValue = "true")
 @EnableConfigurationProperties(ServerFrameProperties.class)
 public class NettyRpcServerAutoConfiguration {
 

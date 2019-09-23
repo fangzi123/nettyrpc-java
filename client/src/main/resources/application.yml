@@ -6,4 +6,6 @@ server:
 #    address: list://127.0.0.1:18866
 
 nettyrpc:
+  client:
+    enable: true
   registryAddress: list://127.0.0.1:18866

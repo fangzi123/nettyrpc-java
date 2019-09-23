@@ -3,6 +3,7 @@ package com.nettyrpc.stater;
 import com.nettyrpc.client.RpcClient;
 import com.nettyrpc.client.proxy.RpcClientProxyBeanPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2019/9/20 16:09
  */
 @Configuration
+@ConditionalOnProperty(prefix = "nettyrpc.client", name = "enable", havingValue = "true")
 @EnableConfigurationProperties(ServerFrameProperties.class)
 public class NettyRpcClientAutoConfiguration {
 

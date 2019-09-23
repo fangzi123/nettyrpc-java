@@ -23,6 +23,8 @@ pagehelper:
   params: count=countSql
 
 nettyrpc:
+  server:
+      enable: true
   registryAddress: list://127.0.0.1:18866
   serverHost: 127.0.0.1
   serverPort: 18866
