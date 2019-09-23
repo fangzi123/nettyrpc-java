@@ -32,7 +32,7 @@
             </dependency>
             <dependency>
                 <groupId>com.nettyrpc</groupId>
-                <artifactId>NettyRpc</artifactId>
+                <artifactId>nettyrpc</artifactId>
                 <version>1.1-SNAPSHOT</version>
                 <exclusions>
                     <exclusion>
@@ -42,9 +42,9 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>com.wangff</groupId>
+                <groupId>com.nettyrpc</groupId>
                 <artifactId>nettyrpc-spring-boot-starter</artifactId>
-                <version>1.1-SNAPSHOT</version>
+                <version>1.2-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
