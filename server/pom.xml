@@ -26,11 +26,11 @@
         <!--rpc中间件-->
         <!--<dependency>-->
             <!--<groupId>com.nettyrpc</groupId>-->
-            <!--<artifactId>NettyRpc</artifactId>-->
-            <!--<version>1.0-SNAPSHOT</version>-->
+            <!--<artifactId>nettyrpc</artifactId>-->
+            <!--<version>1.1-SNAPSHOT</version>-->
         <!--</dependency>-->
         <dependency>
-            <groupId>com.wangff</groupId>
+            <groupId>com.nettyrpc</groupId>
             <artifactId>nettyrpc-spring-boot-starter</artifactId>
             <version>1.2-SNAPSHOT</version>
         </dependency>
