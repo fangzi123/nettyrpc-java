@@ -10,10 +10,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>api</module>
-        <module>server</module>
-        <module>client</module>
         <module>nettyrpc-spring-boot-starter</module>
+        <module>nettyrpc-example</module>
     </modules>
 
     <properties>
