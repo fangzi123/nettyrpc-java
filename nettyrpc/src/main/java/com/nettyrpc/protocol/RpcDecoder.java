@@ -12,9 +12,11 @@ import java.util.List;
 public class RpcDecoder extends ByteToMessageDecoder {
 
     private Class<?> genericClass;
+    private int protocolType;
 
-    public RpcDecoder(Class<?> genericClass) {
+    public RpcDecoder(Class<?> genericClass,int protocolType) {
         this.genericClass = genericClass;
+        this.protocolType = protocolType;
     }
 
     @Override
@@ -33,9 +35,10 @@ public class RpcDecoder extends ByteToMessageDecoder {
         }
         byte[] data = new byte[dataLength];
         in.readBytes(data);
-
-        Object obj = SerializationUtil.deserialize(data, genericClass);
-        //Object obj = JsonUtil.deserialize(data,genericClass); // Not use this, have some bugs
+        //通过 protocolType 获取协议
+        Protocol protocol = ProtocolManager.getInstance().getProtocol(protocolType);
+        Object obj = protocol.deserialize(data,genericClass);
+//        Object obj = ProtoStuffSerializationUtil.deserialize(data, genericClass);
         out.add(obj);
     }
 

@@ -11,16 +11,20 @@ import io.netty.handler.codec.MessageToByteEncoder;
 public class RpcEncoder extends MessageToByteEncoder {
 
     private Class<?> genericClass;
+    private int protocolType;
 
-    public RpcEncoder(Class<?> genericClass) {
+    public RpcEncoder(Class<?> genericClass,int protocolType) {
         this.genericClass = genericClass;
+        this.protocolType = protocolType;
     }
 
     @Override
     public void encode(ChannelHandlerContext ctx, Object in, ByteBuf out) throws Exception {
         if (genericClass.isInstance(in)) {
-            byte[] data = SerializationUtil.serialize(in);
-            //byte[] data = JsonUtil.serialize(in); // Not use this, have some bugs
+//            byte[] data = ProtoStuffSerializationUtil.serialize(in);
+            //通过 protocolType 获取协议
+            Protocol protocol = ProtocolManager.getInstance().getProtocol(protocolType);
+            byte[] data = protocol.serialize(in); // Not use this, have some bugs
             out.writeInt(data.length);
             out.writeBytes(data);
         }

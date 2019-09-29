@@ -1,13 +1,12 @@
 package com.nettyrpc.test.util;
 
-import com.nettyrpc.protocol.JsonUtil;
+import com.nettyrpc.protocol.json.JsonUtil;
 import com.nettyrpc.protocol.RpcRequest;
 import com.nettyrpc.protocol.RpcResponse;
-import com.nettyrpc.protocol.SerializationUtil;
+import com.nettyrpc.protocol.protostuff.ProtoStuffSerializationUtil;
 import com.nettyrpc.test.client.Person;
 import com.nettyrpc.test.server.HelloServiceImpl;
 
-import java.io.IOException;
 import java.util.UUID;
 
 /**
@@ -23,7 +22,7 @@ public class JsonTest {
         byte[] datas = JsonUtil.serialize(response);
         System.out.println("Json byte length: " + datas.length);
 
-        byte[] datas2 = SerializationUtil.serialize(response);
+        byte[] datas2 = ProtoStuffSerializationUtil.serialize(response);
         System.out.println("Protobuf byte length: " + datas2.length);
 
         RpcResponse resp = (RpcResponse)JsonUtil.deserialize(datas,RpcResponse.class);
@@ -43,7 +42,7 @@ public class JsonTest {
         byte[] datas = JsonUtil.serialize(request);
         System.out.println("Json byte length: " + datas.length);
 
-        byte[] datas2 = SerializationUtil.serialize(request);
+        byte[] datas2 = ProtoStuffSerializationUtil.serialize(request);
         System.out.println("Protobuf byte length: " + datas2.length);
 
         RpcRequest req = (RpcRequest)JsonUtil.deserialize(datas,RpcRequest.class);

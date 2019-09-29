@@ -4,6 +4,8 @@ package com.nettyrpc.spi;
 
 import com.nettyrpc.naming.NamingServiceFactory;
 import com.nettyrpc.naming.NamingServiceFactoryManager;
+import com.nettyrpc.protocol.ProtocolFactory;
+import com.nettyrpc.protocol.ProtocolManager;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -30,6 +32,7 @@ public class ExtensionLoaderManager {
     public void loadAllExtensions(String encoding) {
         if (load.compareAndSet(false, true)) {
             loadNamingService();
+            loadProtocol();
         }
     }
 
@@ -40,5 +43,21 @@ public class ExtensionLoaderManager {
             manager.registerNamingServiceFactory(namingServiceFactory);
         }
     }
-
+    public void loadProtocol() {
+        ProtocolManager protocolManager = ProtocolManager.getInstance();
+        ServiceLoader<ProtocolFactory> protocolFactories = ServiceLoader.load(ProtocolFactory.class);
+        List<ProtocolFactory> protocolFactoryList = new ArrayList<ProtocolFactory>();
+        for (ProtocolFactory protocolFactory : protocolFactories) {
+            protocolFactoryList.add(protocolFactory);
+        }
+//        Collections.sort(protocolFactoryList, new Comparator<ProtocolFactory>() {
+//            @Override
+//            public int compare(ProtocolFactory o1, ProtocolFactory o2) {
+//                return o1.getPriority() - o2.getPriority();
+//            }
+//        });
+        for (ProtocolFactory protocolFactory : protocolFactoryList) {
+            protocolManager.registerProtocol(protocolFactory);
+        }
+    }
 }

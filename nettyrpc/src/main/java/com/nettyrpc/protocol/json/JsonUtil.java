@@ -1,4 +1,4 @@
-package com.nettyrpc.protocol;
+package com.nettyrpc.protocol.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;

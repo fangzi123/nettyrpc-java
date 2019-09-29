@@ -137,35 +137,24 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
                             channel.pipeline()
                                     .addLast(new IdleStateHandler(15,0,0,TimeUnit.SECONDS))
                                     .addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 0))
-                                    .addLast(new RpcDecoder(RpcRequest.class))
-                                    .addLast(new RpcEncoder(RpcResponse.class))
+                                    .addLast(new RpcDecoder(RpcRequest.class,rpcServerOptions.getProtocolType()))
+                                    .addLast(new RpcEncoder(RpcResponse.class,rpcServerOptions.getProtocolType()))
                                     .addLast(new RpcHandler(handlerMap));
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            //String[] array = serverAddress.split(":");
-            //String host = array[0];
-            //int port = Integer.parseInt(array[1]);
-
             ChannelFuture future = bootstrap.bind(host, port).sync();
             logger.info("Server started on port {}", port);
-
 
             ExtensionLoaderManager.getInstance().loadAllExtensions("utf-8");
             if (!StringUtils.isEmpty(rpcServerOptions.getNamingServiceUrl())) {
                 RegistryCenterAddress registryCenterAddress = new RegistryCenterAddress(rpcServerOptions.getNamingServiceUrl());
-                NamingServiceFactory namingServiceFactory = NamingServiceFactoryManager.getInstance()
-                        .getNamingServiceFactory(registryCenterAddress.getSchema());
+                NamingServiceFactory namingServiceFactory = NamingServiceFactoryManager.getInstance().getNamingServiceFactory(registryCenterAddress.getSchema());
                 namingService = namingServiceFactory.createNamingService(registryCenterAddress);
-
                 namingService.register(registerInfo);
             }
-//            if (serviceRegistry != null) {
-//                serviceRegistry.register(serverAddress);
-//            }
-
             future.channel().closeFuture().sync();
         }
     }

@@ -27,7 +27,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConnectManage {
     private static final Logger logger = LoggerFactory.getLogger(ConnectManage.class);
     //private volatile static ConnectManage connectManage;
-
+    private Integer protocolType;
     private EventLoopGroup eventLoopGroup = new NioEventLoopGroup(4);
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
             600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(65536));
@@ -43,6 +43,15 @@ public class ConnectManage {
 
     private ConnectManage() {
     }
+
+    public Integer getProtocolType() {
+        return protocolType;
+    }
+
+    public void setProtocolType(Integer protocolType) {
+        this.protocolType = protocolType;
+    }
+
     private static class SingleTonHoler{
         private static ConnectManage singleTon=new ConnectManage();
     }
@@ -127,7 +136,7 @@ public class ConnectManage {
                 Bootstrap b = new Bootstrap();
                 b.group(eventLoopGroup)
                         .channel(NioSocketChannel.class)
-                        .handler(new RpcClientInitializer());
+                        .handler(new RpcClientInitializer(ConnectManage.getInstance().getProtocolType()));
 
                 ChannelFuture channelFuture = b.connect(remotePeer);
                 channelFuture.addListener(new ChannelFutureListener() {

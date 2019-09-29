@@ -1,4 +1,4 @@
-package com.nettyrpc.protocol;
+package com.nettyrpc.protocol.protostuff;
 
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
@@ -13,13 +13,13 @@ import org.objenesis.ObjenesisStd;
  * Serialization Util（Based on Protostuff）
  * @author huangyong
  */
-public class SerializationUtil {
+public class ProtoStuffSerializationUtil {
 
     private static Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
 
     private static Objenesis objenesis = new ObjenesisStd(true);
 
-    private SerializationUtil() {
+    private ProtoStuffSerializationUtil() {
     }
 
     @SuppressWarnings("unchecked")

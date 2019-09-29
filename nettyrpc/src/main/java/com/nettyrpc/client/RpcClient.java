@@ -6,6 +6,8 @@ import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.NamingServiceFactory;
 import com.nettyrpc.naming.NamingServiceFactoryManager;
 import com.nettyrpc.naming.RegistryCenterAddress;
+import com.nettyrpc.protocol.Protocol;
+import com.nettyrpc.protocol.enums.ProtocolTypeEnum;
 import com.nettyrpc.spi.ExtensionLoaderManager;
 
 import java.lang.reflect.Proxy;
@@ -21,23 +23,24 @@ import java.util.concurrent.TimeUnit;
 public class RpcClient {
     private NamingService namingService;
     private String registryCenterAddress;
-    //private ServiceDiscovery serviceDiscovery;
+    private Integer protocolType;
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
             600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(65536));
 
     public RpcClient(String registryCenterAddress) {
-        this.registryCenterAddress = registryCenterAddress;
-        ExtensionLoaderManager.getInstance().loadAllExtensions("utf-8");
-        RegistryCenterAddress url = new RegistryCenterAddress(registryCenterAddress);
-        NamingServiceFactory namingServiceFactory
-                = NamingServiceFactoryManager.getInstance().getNamingServiceFactory(url.getSchema());
-        namingService = namingServiceFactory.createNamingService(url);
-        namingService.subscribe();
+        this(registryCenterAddress, ProtocolTypeEnum.PROTOSTUFF.getType());
     }
 
- /*   public RpcClient(ServiceDiscovery serviceDiscovery) {
-        this.serviceDiscovery = serviceDiscovery;
-    }*/
+    public RpcClient(String registryCenterAddress,Integer protocolType) {
+        this.registryCenterAddress = registryCenterAddress;
+        this.protocolType = protocolType;
+        ExtensionLoaderManager.getInstance().loadAllExtensions("utf-8");
+        RegistryCenterAddress url = new RegistryCenterAddress(registryCenterAddress);
+        NamingServiceFactory namingServiceFactory = NamingServiceFactoryManager.getInstance().getNamingServiceFactory(url.getSchema());
+        namingService = namingServiceFactory.createNamingService(url);
+        namingService.subscribe();
+        ConnectManage.getInstance().setProtocolType(protocolType);
+    }
 
     @SuppressWarnings("unchecked")
     public static <T> T create(Class<T> interfaceClass) {
