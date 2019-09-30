@@ -21,10 +21,9 @@ public class RpcEncoder extends MessageToByteEncoder {
     @Override
     public void encode(ChannelHandlerContext ctx, Object in, ByteBuf out) throws Exception {
         if (genericClass.isInstance(in)) {
-//            byte[] data = ProtoStuffSerializationUtil.serialize(in);
             //通过 protocolType 获取协议
             Protocol protocol = ProtocolManager.getInstance().getProtocol(protocolType);
-            byte[] data = protocol.serialize(in); // Not use this, have some bugs
+            byte[] data = protocol.serialize(in);
             out.writeInt(data.length);
             out.writeBytes(data);
         }

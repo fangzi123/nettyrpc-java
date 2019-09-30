@@ -38,7 +38,6 @@ public class RpcDecoder extends ByteToMessageDecoder {
         //通过 protocolType 获取协议
         Protocol protocol = ProtocolManager.getInstance().getProtocol(protocolType);
         Object obj = protocol.deserialize(data,genericClass);
-//        Object obj = ProtoStuffSerializationUtil.deserialize(data, genericClass);
         out.add(obj);
     }
 

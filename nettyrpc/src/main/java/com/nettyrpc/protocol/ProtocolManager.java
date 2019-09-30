@@ -16,6 +16,7 @@
 
 package com.nettyrpc.protocol;
 
+import com.nettyrpc.protocol.enums.ProtocolTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -56,12 +57,13 @@ public class ProtocolManager {
         Protocol protocol = protocolFactory.createProtocol();
         protocolMap.put(protocolType, protocol);
         protocolFactoryMap.put(protocolType, protocolFactory);
-        log.info("register protocol:{} success", protocolType);
+        log.info("register protocol:{}-{} success", ProtocolTypeEnum.typeOf(protocolType).name(),protocolType);
     }
 
     public Protocol getProtocol(Integer protocolType) {
         Protocol protocol = protocolMap.get(protocolType);
         if (protocol != null) {
+            log.info("use protocol:{}", ProtocolTypeEnum.typeOf(protocolType).name());
             return protocol;
         }
 

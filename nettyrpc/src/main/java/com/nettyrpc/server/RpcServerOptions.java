@@ -17,6 +17,7 @@
 package com.nettyrpc.server;
 
 import com.nettyrpc.interceptor.Interceptor;
+import com.nettyrpc.protocol.enums.ProtocolTypeEnum;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.Getter;
@@ -80,7 +81,7 @@ public class RpcServerOptions {
     }
 
     // server protocol type
-    private Integer protocolType;
+    private Integer protocolType= ProtocolTypeEnum.PROTOSTUFF.getType();
     private String encoding = "utf-8";
     // bns port name when deploys on Jarvis environment
     private String jarvisPortName;

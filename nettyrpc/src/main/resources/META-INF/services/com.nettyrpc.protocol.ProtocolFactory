@@ -1,0 +1,2 @@
+com.nettyrpc.protocol.json.JsonProtocolFactory
+com.nettyrpc.protocol.protostuff.ProtoStuffProtocolFactory
