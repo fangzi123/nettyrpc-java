@@ -25,14 +25,6 @@ SpringBoot环境：
     <version>1.2-SNAPSHOT</version>
 </dependency>
 ```
-Spring环境：
-```xml
-<dependency>
-    <groupId>com.nettyrpc</groupId>
-    <artifactId>nettyrpc</artifactId>
-    <version>1.2-SNAPSHOT</version>
-</dependency>
-```
 ### Server端使用
 * [server端基本用法](https://github.com/fangzi123/learn/tree/dev/nettyrpc-example/server1/README.md)
 

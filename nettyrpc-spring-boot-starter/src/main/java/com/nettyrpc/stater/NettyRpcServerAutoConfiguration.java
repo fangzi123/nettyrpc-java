@@ -3,6 +3,7 @@ package com.nettyrpc.stater;
 import com.nettyrpc.interceptor.ServerCurrentLimitInterceptor;
 import com.nettyrpc.server.RpcServer;
 import com.nettyrpc.server.RpcServerOptions;
+import com.nettyrpc.server.currentlimit.CounterCurrentLimiter;
 import com.nettyrpc.server.currentlimit.CurrentLimiter;
 import com.nettyrpc.server.currentlimit.TokenBucketCurrentLimiter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,12 @@ public class NettyRpcServerAutoConfiguration {
     private ServerFrameProperties properties;
 
     @Bean
-    public TokenBucketCurrentLimiter currentLimiter(){
-        return new TokenBucketCurrentLimiter(properties.getTokenBucketSize(),properties.getTokenInputRate());
+    public CurrentLimiter currentLimiter(){
+        if (properties.getMaxQps()!=0) {
+            return new CounterCurrentLimiter(properties.getMaxQps());
+        }else{
+            return new TokenBucketCurrentLimiter(properties.getTokenBucketSize(),properties.getTokenInputRate());
+        }
     }
 
     @Bean
