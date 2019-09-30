@@ -9,4 +9,4 @@ nettyrpc:
   client:
     enable: true
   registryAddress: list://127.0.0.1:18080
-  protocolType: 1
+  protocolType: 2

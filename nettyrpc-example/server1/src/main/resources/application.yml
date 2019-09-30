@@ -26,8 +26,8 @@ nettyrpc:
   server:
       enable: true
   registryAddress: list://127.0.0.1:18080
-  protocolType: 1
+  protocolType: 2
   serverHost: 127.0.0.1
   serverPort: 18080
-  tokenBucketSize: 1
-  tokenInputRate: 1
+  tokenBucketSize: 1000
+  tokenInputRate: 1000
