@@ -6,9 +6,9 @@ import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.NamingServiceFactory;
 import com.nettyrpc.naming.NamingServiceFactoryManager;
 import com.nettyrpc.naming.RegistryCenterAddress;
-import com.nettyrpc.protocol.Protocol;
 import com.nettyrpc.protocol.enums.ProtocolTypeEnum;
 import com.nettyrpc.spi.ExtensionLoaderManager;
+import lombok.Getter;
 
 import java.lang.reflect.Proxy;
 import java.util.concurrent.ArrayBlockingQueue;

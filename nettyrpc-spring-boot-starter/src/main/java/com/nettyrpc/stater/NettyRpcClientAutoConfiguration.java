@@ -22,7 +22,7 @@ public class NettyRpcClientAutoConfiguration {
 
     @Bean(name = "rpcClient")
     public RpcClient rpcClient () {
-        return new RpcClient(properties.getRegistryAddress());
+        return new RpcClient(properties.getRegistryAddress(),properties.getProtocolType());
     }
 
     @Bean
