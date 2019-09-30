@@ -2,6 +2,8 @@ package com.nettyrpc.spi;
 
 
 
+import com.nettyrpc.client.loadbalance.LoadBalanceFactory;
+import com.nettyrpc.client.loadbalance.LoadBalanceManager;
 import com.nettyrpc.naming.NamingServiceFactory;
 import com.nettyrpc.naming.NamingServiceFactoryManager;
 import com.nettyrpc.protocol.ProtocolFactory;
@@ -33,6 +35,15 @@ public class ExtensionLoaderManager {
         if (load.compareAndSet(false, true)) {
             loadNamingService();
             loadProtocol();
+            loadLoadBalance();
+        }
+    }
+
+    public void loadLoadBalance() {
+        LoadBalanceManager loadBalanceManager = LoadBalanceManager.getInstance();
+        ServiceLoader<LoadBalanceFactory> loadBalanceFactories = ServiceLoader.load(LoadBalanceFactory.class);
+        for (LoadBalanceFactory loadBalanceFactory : loadBalanceFactories) {
+            loadBalanceManager.registerLoadBalance(loadBalanceFactory);
         }
     }
 

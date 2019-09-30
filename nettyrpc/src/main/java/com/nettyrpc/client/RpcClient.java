@@ -24,26 +24,25 @@ import java.util.concurrent.TimeUnit;
 public class RpcClient {
     private NamingService namingService;
     private String registryCenterAddress;
-    private Integer protocolType=ProtocolTypeEnum.PROTOSTUFF.getType();
+
+    private RpcClientOptions rpcClientOptions;
 
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
             600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(65536));
 
     public RpcClient(String registryCenterAddress) {
-        this(registryCenterAddress, null);
+        this(registryCenterAddress, new RpcClientOptions());
     }
 
-    public RpcClient(String registryCenterAddress,Integer protocolType) {
+    public RpcClient(String registryCenterAddress,RpcClientOptions rpcClientOptions) {
         this.registryCenterAddress = registryCenterAddress;
-        if (protocolType!= null) {
-            this.protocolType = protocolType;
-        }
+        this.rpcClientOptions = rpcClientOptions;
         ExtensionLoaderManager.getInstance().loadAllExtensions("utf-8");
         RegistryCenterAddress url = new RegistryCenterAddress(registryCenterAddress);
         NamingServiceFactory namingServiceFactory = NamingServiceFactoryManager.getInstance().getNamingServiceFactory(url.getSchema());
         namingService = namingServiceFactory.createNamingService(url);
         namingService.subscribe();
-        ConnectManage.getInstance().setProtocolType(this.protocolType);
+        ConnectManage.getInstance().setRpcClientOptions(this.rpcClientOptions);
     }
 
     @SuppressWarnings("unchecked")

@@ -27,7 +27,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConnectManage {
     private static final Logger logger = LoggerFactory.getLogger(ConnectManage.class);
     //private volatile static ConnectManage connectManage;
-    private Integer protocolType;
+    private RpcClientOptions rpcClientOptions;
     private EventLoopGroup eventLoopGroup = new NioEventLoopGroup(4);
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
             600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(65536));
@@ -44,12 +44,12 @@ public class ConnectManage {
     private ConnectManage() {
     }
 
-    public Integer getProtocolType() {
-        return protocolType;
+    public RpcClientOptions getRpcClientOptions() {
+        return rpcClientOptions;
     }
 
-    public void setProtocolType(Integer protocolType) {
-        this.protocolType = protocolType;
+    public void setRpcClientOptions(RpcClientOptions rpcClientOptions) {
+        this.rpcClientOptions = rpcClientOptions;
     }
 
     private static class SingleTonHoler{
@@ -136,7 +136,7 @@ public class ConnectManage {
                 Bootstrap b = new Bootstrap();
                 b.group(eventLoopGroup)
                         .channel(NioSocketChannel.class)
-                        .handler(new RpcClientInitializer(ConnectManage.getInstance().getProtocolType()));
+                        .handler(new RpcClientInitializer(ConnectManage.getInstance().getRpcClientOptions().getProtocolType()));
 
                 ChannelFuture channelFuture = b.connect(remotePeer);
                 channelFuture.addListener(new ChannelFutureListener() {
@@ -191,6 +191,13 @@ public class ConnectManage {
     }
 
     public RpcClientHandler chooseHandler() {
+        CopyOnWriteArrayList<RpcClientHandler> connectedHandlers=getConnectedHandlers();
+        int size = connectedHandlers.size();
+        int index = (roundRobin.getAndAdd(1) + size) % size;
+        return connectedHandlers.get(index);
+    }
+
+    public CopyOnWriteArrayList<RpcClientHandler>  getConnectedHandlers() {
         int size = connectedHandlers.size();
         int count = 0;
         while (isRuning && size <= 0&&count<=0) {
@@ -208,10 +215,8 @@ public class ConnectManage {
         if (size == 0) {
             throw new RuntimeException("Can't connect any servers!");
         }
-        int index = (roundRobin.getAndAdd(1) + size) % size;
-        return connectedHandlers.get(index);
+        return connectedHandlers;
     }
-
     public void stop() {
         isRuning = false;
         for (int i = 0; i < connectedHandlers.size(); ++i) {

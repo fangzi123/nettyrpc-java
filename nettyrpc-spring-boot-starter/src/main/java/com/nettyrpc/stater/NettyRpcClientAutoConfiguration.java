@@ -1,12 +1,17 @@
 package com.nettyrpc.stater;
 
 import com.nettyrpc.client.RpcClient;
+import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.client.proxy.RpcClientProxyBeanPostProcessor;
+import com.nettyrpc.interceptor.ServerCurrentLimitInterceptor;
+import com.nettyrpc.server.RpcServerOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 /**
  * @author wangff
@@ -20,9 +25,17 @@ public class NettyRpcClientAutoConfiguration {
     @Autowired
     private ServerFrameProperties properties;
 
+    @Bean
+    public RpcClientOptions rpcClientOptions() {
+        RpcClientOptions rpcClientOptions=new RpcClientOptions();
+        rpcClientOptions.setProtocolType(properties.getProtocolType());
+        rpcClientOptions.setLoadBalanceType(properties.getLoadBalanceType());
+        return rpcClientOptions;
+    }
+
     @Bean(name = "rpcClient")
-    public RpcClient rpcClient () {
-        return new RpcClient(properties.getRegistryAddress(),properties.getProtocolType());
+    public RpcClient rpcClient (RpcClientOptions rpcClientOptions) {
+        return new RpcClient(properties.getRegistryAddress(),rpcClientOptions);
     }
 
     @Bean

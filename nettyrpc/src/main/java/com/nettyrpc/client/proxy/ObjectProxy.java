@@ -3,6 +3,8 @@ package com.nettyrpc.client.proxy;
 import com.nettyrpc.client.ConnectManage;
 import com.nettyrpc.client.RPCFuture;
 import com.nettyrpc.client.RpcClientHandler;
+import com.nettyrpc.client.loadbalance.LoadBalance;
+import com.nettyrpc.client.loadbalance.LoadBalanceManager;
 import com.nettyrpc.protocol.RpcRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +57,9 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
             LOGGER.debug(args[i].toString());
         }
 
-        RpcClientHandler handler = ConnectManage.getInstance().chooseHandler();
+        LoadBalance loadBalance = LoadBalanceManager.getInstance().getLoadBalance(ConnectManage.getInstance().getRpcClientOptions().getLoadBalanceType());
+        RpcClientHandler handler =loadBalance.selectInstance(ConnectManage.getInstance().getConnectedHandlers());
+        //RpcClientHandler handler = ConnectManage.getInstance().chooseHandler();
         RPCFuture rpcFuture = handler.sendRequest(request);
         return rpcFuture.get();
     }
