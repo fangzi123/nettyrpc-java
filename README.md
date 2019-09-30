@@ -1,5 +1,4 @@
 # 项目名称
-nettyrpc-java
 nettyrpc-java 是 rpc的java版实现，支持 fastjson,protostuff 序列化协议。
 
 # 核心功能点
