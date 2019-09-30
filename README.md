@@ -25,10 +25,10 @@ SpringBoot环境：
 </dependency>
 ```
 ### Server端使用
-* [server端基本用法](https://github.com/fangzi123/learn/tree/dev/nettyrpc-example/server1/README.md)
+* [server端基本用法](https://github.com/fangzi123/nettyrpc-java/tree/dev/nettyrpc-example/server1/README.md)
 
 ### Client端使用
-* [client端基本用法](https://github.com/fangzi123/learn/tree/dev/nettyrpc-example/client/README.md)
+* [client端基本用法](https://github.com/fangzi123/nettyrpc-java/tree/dev/nettyrpc-example/client/README.md)
 
 ### 扩展
 * [扩展Protocol、NamingService、LoadBalance](https://github.com/baidu/brpc-java/blob/master/docs/cn/extension.md)
