@@ -2,6 +2,7 @@ package com.nettyrpc.test.app;
 
 import com.nettyrpc.client.RPCFuture;
 import com.nettyrpc.client.RpcClient;
+import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.client.proxy.IAsyncObjectProxy;
 import com.nettyrpc.client.proxy.RpcClientProxy;
 import com.nettyrpc.test.client.PersonService;
@@ -26,7 +27,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:client-spring.xml")
 public class ServiceTest {
-
     @Autowired
     private RpcClient rpcClient;
 
