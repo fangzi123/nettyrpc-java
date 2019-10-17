@@ -30,7 +30,7 @@
             <artifactId>nettyrpc-spring-boot-starter</artifactId>
             <version>1.2-SNAPSHOT</version>
         </dependency>
-        <!--注册中心-->
+        <!--注册中心-zookeeper 可选-->
         <dependency>
             <groupId>com.wangff</groupId>
             <artifactId>nettyrpc-naming-zookeeper</artifactId>
