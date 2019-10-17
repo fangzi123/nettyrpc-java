@@ -1,5 +1,8 @@
 package com.nettyrpc.naming;
 
+import com.nettyrpc.naming.enums.NamingTypeEnum;
+import com.nettyrpc.naming.file.FileNamingServiceFactory;
+import com.nettyrpc.naming.list.ListNamingServiceFactory;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -24,8 +27,8 @@ public class NamingServiceFactoryManager {
 
     private NamingServiceFactoryManager() {
         this.namingServiceFactoryMap = new HashMap<String, NamingServiceFactory>();
-//        this.namingServiceFactoryMap.put("list", new ListNamingServiceFactory());
-//        this.namingServiceFactoryMap.put("list", new ListNamingServiceFactory());
+        this.namingServiceFactoryMap.put(NamingTypeEnum.LIST.getType(), new ListNamingServiceFactory());
+        this.namingServiceFactoryMap.put(NamingTypeEnum.FILE.getType(), new FileNamingServiceFactory());
     }
 
     public void registerNamingServiceFactory(NamingServiceFactory namingServiceFactory) {

@@ -13,27 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.nettyrpc.naming.list;
+package com.nettyrpc.naming.file;
 
+import com.nettyrpc.client.ConnectManage;
 import com.nettyrpc.naming.NamingService;
-import com.nettyrpc.naming.NamingServiceFactory;
+import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
-import com.nettyrpc.naming.enums.NamingTypeEnum;
+import lombok.extern.slf4j.Slf4j;
 
-public class ListNamingServiceFactory implements NamingServiceFactory {
+import java.util.List;
+
+/**
+ * Fetch service list from File Naming Service
+ */
+@Slf4j
+public class FileNamingService implements NamingService {
+
+    private RegistryCenterAddress registryCenterAddress;
+
+    public FileNamingService(RegistryCenterAddress registryCenterAddress) {
+        this.registryCenterAddress = registryCenterAddress;
+    }
+
 
     @Override
-    public String getName() {
-        return NamingTypeEnum.LIST.getType();
+    public void subscribe() {
+        List<String> dataList = List.of(registryCenterAddress.getHostPorts().split(","));
+        ConnectManage.getInstance().updateConnectedServer(dataList);
     }
 
     @Override
-    public NamingService createNamingService(RegistryCenterAddress registryCenterAddress) {
-        String schema = registryCenterAddress.getSchema();
-        if (NamingTypeEnum.LIST.getType().equals(schema)) {
-            return new ListNamingService(registryCenterAddress);
-        } else {
-            throw new IllegalArgumentException("schema is not valid:" + schema);
-        }
+    public void register(RegisterInfo registerInfo) {
+
     }
+
+
 }

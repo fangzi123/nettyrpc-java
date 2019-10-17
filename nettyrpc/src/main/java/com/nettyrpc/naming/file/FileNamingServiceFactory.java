@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Baidu, Inc. All Rights Reserved.
+ * Copyright (c) 2019 Baidu, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this list except in compliance with the License.
@@ -13,28 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.nettyrpc.naming.zookeeper;
-
+package com.nettyrpc.naming.file;
 
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.NamingServiceFactory;
 import com.nettyrpc.naming.RegistryCenterAddress;
 import com.nettyrpc.naming.enums.NamingTypeEnum;
-import com.nettyrpc.naming.list.ListNamingService;
 
-public class ZookeeperNamingFactory implements NamingServiceFactory {
+public class FileNamingServiceFactory implements NamingServiceFactory {
 
     @Override
     public String getName() {
-        return NamingTypeEnum.ZOOKEEPER.getType();
+        return NamingTypeEnum.FILE.getType();
     }
 
     @Override
     public NamingService createNamingService(RegistryCenterAddress registryCenterAddress) {
         String schema = registryCenterAddress.getSchema();
-        if (NamingTypeEnum.ZOOKEEPER.getType().equals(schema)) {
-            return new ZookeeperNamingService(registryCenterAddress);
+        if (NamingTypeEnum.FILE.getType().equals(schema)) {
+            return new FileNamingService(registryCenterAddress);
         } else {
             throw new IllegalArgumentException("schema is not valid:" + schema);
         }
