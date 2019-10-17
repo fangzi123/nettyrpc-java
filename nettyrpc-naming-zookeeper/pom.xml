@@ -12,6 +12,12 @@
     <artifactId>nettyrpc-naming-zookeeper</artifactId>
 
     <dependencies>
+        <!-- ZooKeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.14</version>
+        </dependency>
 
         <dependency>
             <groupId>com.nettyrpc</groupId>
