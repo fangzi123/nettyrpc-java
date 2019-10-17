@@ -29,18 +29,22 @@ import java.util.Map;
 @Slf4j
 public class RegistryCenterAddress {
     private String schema;
+    private String path;
     /**
-     * we do not parse host and port,
-     * because different naming url has different formats:
-     * "127.0.0.1:8002,127.0.0.1:8003"
-     * "test.bj:portTag"
-     * "brpc.com"
-     * "127.0.0.1:8080"
+     *   file  * "conf/server_list.conf"
+     *   list   * "127.0.0.1:18866,127.0.0.1:18867"
+     *   zookeeper   * "127.0.0.1:2181"
      */
     private String hostPorts;
-    private String path;
+
     private Map<String, Object> queryMap = new HashMap<String, Object>();
 
+    /**
+     *      * "file://conf/server_list.conf"
+     *      * "list://127.0.0.1:18866"
+     *      * "zookeeper://127.0.0.1:2181"
+     * @param uri
+     */
     public RegistryCenterAddress(String uri) {
         // schema
         int index = uri.indexOf("://");
@@ -48,6 +52,7 @@ public class RegistryCenterAddress {
             throw new IllegalArgumentException("invalid uri:" + uri);
         }
         this.schema = uri.substring(0, index).toLowerCase();
+        this.path=uri.split("\\:\\/\\/")[1].toLowerCase();
         // hostPorts
         int index2 = uri.indexOf('/', index + 3);
         int index3 = uri.indexOf('?', index + 3);
@@ -60,15 +65,15 @@ public class RegistryCenterAddress {
         }
 
         // path
-        if (index2 > 0) {
-            if (index3 > 0) {
-                this.path = uri.substring(index2, index3);
-            } else {
-                this.path = uri.substring(index2);
-            }
-        } else {
-            this.path = "/";
-        }
+//        if (index2 > 0) {
+//            if (index3 > 0) {
+//                this.path = uri.substring(index2, index3);
+//            } else {
+//                this.path = uri.substring(index2);
+//            }
+//        } else {
+//            this.path = "/";
+//        }
 
         // query
         if (index3 > 0) {

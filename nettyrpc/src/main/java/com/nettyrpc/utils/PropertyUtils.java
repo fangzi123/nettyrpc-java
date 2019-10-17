@@ -13,7 +13,7 @@ public class PropertyUtils {
     private static Properties property = new Properties();
     static {
         try (
-                InputStream in = PropertyUtils.class.getResourceAsStream("/custom.properties");
+                InputStream in = PropertyUtils.class.getResourceAsStream("/conf/server_list.conf");
         ) {
             property.load(in);
         } catch (Exception e) {

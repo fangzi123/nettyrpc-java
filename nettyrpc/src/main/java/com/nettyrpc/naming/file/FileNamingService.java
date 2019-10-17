@@ -19,8 +19,11 @@ import com.nettyrpc.client.ConnectManage;
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
+import com.nettyrpc.utils.PropertyUtils;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -38,7 +41,7 @@ public class FileNamingService implements NamingService {
 
     @Override
     public void subscribe() {
-        List<String> dataList = List.of(registryCenterAddress.getHostPorts().split(","));
+        List<String> dataList = List.of(PropertyUtils.get("server").split(","));
         ConnectManage.getInstance().updateConnectedServer(dataList);
     }
 
