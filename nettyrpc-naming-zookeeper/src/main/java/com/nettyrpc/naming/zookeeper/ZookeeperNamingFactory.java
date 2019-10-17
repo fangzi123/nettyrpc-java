@@ -21,7 +21,6 @@ import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.NamingServiceFactory;
 import com.nettyrpc.naming.RegistryCenterAddress;
 import com.nettyrpc.naming.enums.NamingTypeEnum;
-import com.nettyrpc.naming.list.ListNamingService;
 
 public class ZookeeperNamingFactory implements NamingServiceFactory {
 

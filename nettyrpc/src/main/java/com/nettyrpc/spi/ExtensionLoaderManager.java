@@ -50,9 +50,9 @@ public class ExtensionLoaderManager {
     public void loadNamingService() {
         NamingServiceFactoryManager manager = NamingServiceFactoryManager.getInstance();
         ServiceLoader<NamingServiceFactory> namingServiceFactories = ServiceLoader.load(NamingServiceFactory.class);
-        for (NamingServiceFactory namingServiceFactory : namingServiceFactories) {
+        namingServiceFactories.forEach(namingServiceFactory -> {
             manager.registerNamingServiceFactory(namingServiceFactory);
-        }
+        });
     }
     public void loadProtocol() {
         ProtocolManager protocolManager = ProtocolManager.getInstance();

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wangff</groupId>
-    <artifactId>learn</artifactId>
+    <artifactId>nettyrpc-java</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -13,6 +13,7 @@
         <module>nettyrpc</module>
         <module>nettyrpc-spring-boot-starter</module>
         <module>nettyrpc-example</module>
+        <module>nettyrpc-naming-zookeeper</module>
     </modules>
 
     <properties>
