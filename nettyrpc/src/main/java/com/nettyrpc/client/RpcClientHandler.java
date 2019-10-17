@@ -112,7 +112,7 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
     }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext channelHandlerContext, RpcResponse response) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, RpcResponse response) throws Exception {
         String requestId = response.getRequestId();
         RPCFuture rpcFuture = pendingRPC.get(requestId);
         if (rpcFuture != null) {
@@ -120,4 +120,5 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
             rpcFuture.done(response);
         }
     }
+
 }
