@@ -67,6 +67,10 @@ public class ConnectManage {
         return connectManage;*/
     }
 
+    /**
+     * 消费者服务订阅
+     * @param allServerAddress [127.0.0.1:18080,127.0.0.1:18081]
+     */
     public void updateConnectedServer(List<String> allServerAddress) {
         if (allServerAddress != null) {
             if (allServerAddress.size() > 0) {  // Get available server node
