@@ -36,6 +36,7 @@
         <!--<artifactId>nettyrpc-naming-zookeeper</artifactId>-->
         <!--<version>1.0-SNAPSHOT</version>-->
         <!--</dependency>-->
+        <!--注册发现中心-nacos-->
         <dependency>
             <groupId>com.wangff</groupId>
             <artifactId>nettyrpc-naming-nacos</artifactId>

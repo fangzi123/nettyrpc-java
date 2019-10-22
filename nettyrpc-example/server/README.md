@@ -12,12 +12,22 @@ SpringBoot环境：
     <version>1.2-SNAPSHOT</version>
 </dependency>
 ```
+注册发现中心：
+<!--nacos-->
+```xml
+<dependency>
+    <groupId>com.wangff</groupId>
+    <artifactId>nettyrpc-naming-nacos</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
 ### application.yml
 ```yaml
 nettyrpc:
   server:
       enable: true
-  registryAddress: list://127.0.0.1:18080
+  registryAddress: nacos://127.0.0.1:8848
+  serviceId: nettyrpc-server
   protocolType: 1  # PROTOSTUFF = 1; JSON = 2;
   serverHost: 127.0.0.1
   serverPort: 18080

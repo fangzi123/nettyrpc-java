@@ -25,6 +25,23 @@ SpringBoot环境：
     <version>1.2-SNAPSHOT</version>
 </dependency>
 ```
+注册发现中心(list与file不需要)：
+<!--nacos-->
+```xml
+<dependency>
+    <groupId>com.wangff</groupId>
+    <artifactId>nettyrpc-naming-nacos</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+<!--zookeeper-->
+```xml
+<dependency>
+    <groupId>com.wangff</groupId>
+    <artifactId>nettyrpc-naming-zookeeper</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
 ### Server端使用
 * [server端基本用法](https://github.com/fangzi123/nettyrpc-java/tree/dev/nettyrpc-example/server/README.md)
 
