@@ -16,13 +16,12 @@
 package com.nettyrpc.naming.list;
 
 import com.nettyrpc.client.ConnectManage;
+import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
-import com.nettyrpc.registry.Constant;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,7 +38,7 @@ public class ListNamingService implements NamingService {
 
 
     @Override
-    public void subscribe() {
+    public void subscribe(RpcClientOptions rpcClientOptions) {
         List<String> dataList = List.of(registryCenterAddress.getHostPorts().split(","));
         ConnectManage.getInstance().updateConnectedServer(dataList);
     }

@@ -49,7 +49,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
     private int port;
     //private String serverAddress;
     //    private ServiceRegistry serviceRegistry;
-    private RegisterInfo registerInfo = new RegisterInfo();
+    private RegisterInfo registerInfo = null;
     private NamingService namingService;
     private RpcServerOptions rpcServerOptions = new RpcServerOptions();
 
@@ -68,7 +68,11 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
     public RpcServer(String host,int port,final RpcServerOptions options) {
         this.host = host;
         this.port = port;
-        registerInfo.setHostPort(host+":"+port);
+        RegisterInfo rhs = new RegisterInfo();
+        rhs.setHost(host);
+        rhs.setPort(port);
+        rhs.setServiceId(options.getServiceId());
+        registerInfo = new RegisterInfo(rhs);
         this.rpcServerOptions = options;
         if (options.getInterceptors() != null) {
             interceptors.addAll(options.getInterceptors());

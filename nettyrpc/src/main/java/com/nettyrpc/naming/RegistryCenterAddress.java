@@ -39,6 +39,16 @@ public class RegistryCenterAddress {
 
     private Map<String, Object> queryMap = new HashMap<String, Object>();
 
+    private String serviceId = "";
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
+    }
+
     /**
      *      * "file://conf/server_list.conf"
      *      * "list://127.0.0.1:18866"

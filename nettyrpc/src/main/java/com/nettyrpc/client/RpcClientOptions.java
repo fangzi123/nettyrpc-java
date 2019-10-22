@@ -32,6 +32,7 @@ public class RpcClientOptions {
 
     private int protocolType = ProtocolTypeEnum.PROTOSTUFF.getType();
     private int loadBalanceType = LoadBalance.LOAD_BALANCE_ROUND_ROBIN;
+    private String serviceId = "";
 
     private int connectTimeoutMillis = 1000;
     private int readTimeoutMillis = 1000;
@@ -108,6 +109,7 @@ public class RpcClientOptions {
         this.writeTimeoutMillis = another.writeTimeoutMillis;
         this.clientName = another.clientName;
         this.globalThreadPoolSharing = another.globalThreadPoolSharing;
+        this.serviceId = another.serviceId;
     }
 
 }

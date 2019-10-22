@@ -16,14 +16,13 @@
 package com.nettyrpc.naming.file;
 
 import com.nettyrpc.client.ConnectManage;
+import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
 import com.nettyrpc.utils.PropertyUtils;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -40,7 +39,7 @@ public class FileNamingService implements NamingService {
 
 
     @Override
-    public void subscribe() {
+    public void subscribe(RpcClientOptions rpcClientOptions) {
         List<String> dataList = List.of(PropertyUtils.get("server").split(","));
         ConnectManage.getInstance().updateConnectedServer(dataList);
     }

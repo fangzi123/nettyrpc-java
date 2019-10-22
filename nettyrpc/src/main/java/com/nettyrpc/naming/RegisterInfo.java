@@ -15,10 +15,8 @@
  */
 package com.nettyrpc.naming;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.context.annotation.Bean;
 
 /**
  * POJO class of register info.
@@ -47,8 +45,8 @@ public class RegisterInfo extends NamingOptions {
         super(rhs);
         this.host = rhs.getHost();
         this.port = rhs.getPort();
-        this.hostPort = rhs.getHostPort();
-        this.interfaceName = rhs.getInterfaceName();
+        this.hostPort = rhs.getHost()+":"+rhs.getPort();
+        this.interfaceName= rhs.getInterfaceName();
     }
 
     public RegisterInfo(NamingOptions namingOptions) {

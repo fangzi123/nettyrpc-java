@@ -41,7 +41,7 @@ public class RpcClient {
         RegistryCenterAddress url = new RegistryCenterAddress(registryCenterAddress);
         NamingServiceFactory namingServiceFactory = NamingServiceFactoryManager.getInstance().getNamingServiceFactory(url.getSchema());
         namingService = namingServiceFactory.createNamingService(url);
-        namingService.subscribe();
+        namingService.subscribe(rpcClientOptions);
         ConnectManage.getInstance().setRpcClientOptions(this.rpcClientOptions);
     }
 

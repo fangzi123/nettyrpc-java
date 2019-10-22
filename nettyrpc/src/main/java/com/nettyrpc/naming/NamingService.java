@@ -15,6 +15,8 @@
  */
 package com.nettyrpc.naming;
 
+import com.nettyrpc.client.RpcClientOptions;
+
 public interface NamingService {
     /**
      * 查询符合条件的已注册数据，与订阅的推模式相对应，这里为拉模式，只返回一次结果。
@@ -27,8 +29,9 @@ public interface NamingService {
     /**
      * 订阅符合条件的已注册数据，当有注册数据变更时自动推送.
      *
+     * @param rpcClientOptions
      */
-    void subscribe();
+    void subscribe(RpcClientOptions rpcClientOptions);
 
     /**
      * 取消订阅.

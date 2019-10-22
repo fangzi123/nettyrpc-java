@@ -18,6 +18,7 @@ package com.nettyrpc.naming.zookeeper;
 
 
 import com.nettyrpc.client.ConnectManage;
+import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
@@ -42,7 +43,7 @@ public class ZookeeperNamingService implements NamingService {
     }
 
     @Override
-    public void subscribe() {
+    public void subscribe(RpcClientOptions rpcClientOptions) {
         ZooKeeper zookeeper = connectServer();
         if (zookeeper != null) {
             watchNode(zookeeper);

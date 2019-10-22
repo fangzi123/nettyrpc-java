@@ -12,9 +12,12 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 public enum NamingTypeEnum {
-    LIST("list"),
-    FILE("file"),
-    ZOOKEEPER("zookeeper"),
+    LIST("list"),//已实现
+    FILE("file"),//已实现
+    ZOOKEEPER("zookeeper"),//已实现
+    NACOS("nacos"),//已实现
+    EUREKA("eureka"),//todo
+    CONSUL("consul"),//todo
     ;
 
     private String type;

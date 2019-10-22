@@ -45,6 +45,8 @@ public class NettyRpcServerAutoConfiguration {
         RpcServerOptions rpcServerOptions=new RpcServerOptions();
         rpcServerOptions.setNamingServiceUrl(properties.getRegistryAddress());
         rpcServerOptions.setProtocolType(properties.getProtocolType());
+        rpcServerOptions.setServiceId(properties.getServiceId());
+
         rpcServerOptions.setInterceptors(List.of(serverCurrentLimitInterceptor));
         return rpcServerOptions;
     }

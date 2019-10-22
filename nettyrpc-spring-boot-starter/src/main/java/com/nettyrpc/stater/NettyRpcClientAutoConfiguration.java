@@ -30,6 +30,7 @@ public class NettyRpcClientAutoConfiguration {
         RpcClientOptions rpcClientOptions=new RpcClientOptions();
         rpcClientOptions.setProtocolType(properties.getProtocolType());
         rpcClientOptions.setLoadBalanceType(properties.getLoadBalanceType());
+        rpcClientOptions.setServiceId(properties.getServiceId());
         return rpcClientOptions;
     }
 

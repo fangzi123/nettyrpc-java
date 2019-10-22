@@ -89,7 +89,7 @@ public class RpcServerOptions {
     private String namingServiceUrl = "";
     // share global thread pool between multi rpcServer
     private boolean globalThreadPoolSharing = false;
-
+    private String serviceId = "example";
     private List<Interceptor> interceptors;
 
     public RpcServerOptions(RpcServerOptions options) {
@@ -97,6 +97,7 @@ public class RpcServerOptions {
     }
 
     public void copyFrom(RpcServerOptions options) {
+        this.serviceId = options.serviceId;
         this.acceptorThreadNum = options.acceptorThreadNum;
         this.backlog = options.backlog;
         this.encoding = options.encoding;
