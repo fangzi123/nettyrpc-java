@@ -1,6 +1,6 @@
 package com.nettyrpc.test.util;
 
-import com.nettyrpc.protocol.json.JsonUtil;
+import com.nettyrpc.protocol.fastjson.JsonUtil;
 import com.nettyrpc.protocol.RpcRequest;
 import com.nettyrpc.protocol.RpcResponse;
 import com.nettyrpc.protocol.protostuff.ProtoStuffSerializationUtil;

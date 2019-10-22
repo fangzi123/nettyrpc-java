@@ -12,7 +12,10 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 public enum ProtocolTypeEnum {
-    PROTOSTUFF(1),JSON(2);
+    PROTOSTUFF(1),
+    FASTJSON(2),
+    KRYO(3),
+    ;
 
     private int type;
 

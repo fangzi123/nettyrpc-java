@@ -28,7 +28,7 @@ nettyrpc:
     enable: true 
   registryAddress: nacos://127.0.0.1:8848
   serviceId: nettyrpc-server
-  protocolType: 1    # PROTOSTUFF = 1; JSON = 2;
+  protocolType: 1
   loadBalanceType: 0 # LOAD_BALANCE_RANDOM = 0; LOAD_BALANCE_ROUND_ROBIN = 1;
 ```
 

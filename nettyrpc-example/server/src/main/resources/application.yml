@@ -30,6 +30,6 @@ nettyrpc:
   serviceId: nettyrpc-server
   serverHost: 127.0.0.1
   serverPort: 18080
-  protocolType: 1
+  protocolType: 3
   tokenBucketSize: 1000
   tokenInputRate: 1000

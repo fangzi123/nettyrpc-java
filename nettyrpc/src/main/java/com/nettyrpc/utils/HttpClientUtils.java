@@ -53,7 +53,7 @@ public class HttpClientUtils
                 // 解决中文乱码问题
                 StringEntity entity = new StringEntity(jsonParam.toString(), "utf-8");
                 entity.setContentEncoding("UTF-8");
-                entity.setContentType("application/json");
+                entity.setContentType("application/fastjson");
                 httpPost.setEntity(entity);
             }
             CloseableHttpResponse result = httpClient.execute(httpPost);
