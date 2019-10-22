@@ -26,6 +26,7 @@ SpringBoot环境：
 </dependency>
 ```
 注册发现中心(list与file不需要)：
+
 nacos：
 ```xml
 <dependency>
