@@ -26,7 +26,7 @@ SpringBoot环境：
 </dependency>
 ```
 注册发现中心(list与file不需要)：
-<!--nacos-->
+nacos：
 ```xml
 <dependency>
     <groupId>com.wangff</groupId>
@@ -34,7 +34,7 @@ SpringBoot环境：
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
-<!--zookeeper-->
+zookeeper：
 ```xml
 <dependency>
     <groupId>com.wangff</groupId>
