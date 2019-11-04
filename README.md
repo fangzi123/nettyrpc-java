@@ -12,7 +12,8 @@ nettyrpc-java 是 rpc的java版实现，支持 kryo、protostuff、fastjson序�
 * rpc功能依赖Spring。不强依赖注册中心。
 * 基于SPI机制可灵活扩展Protocol、NamingService和LoadBalance。
 ### Design:
-![design](docs/rpc.png)
+![design](https://images2015.cnblogs.com/blog/434101/201603/434101-20160316102651631-1816064105.png)
+
 ## 快速开始
 ### 开发环境
 java 11 && netty 4 && protostuff 1.0.8
