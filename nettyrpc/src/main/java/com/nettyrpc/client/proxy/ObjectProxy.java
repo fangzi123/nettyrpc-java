@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.UUID;
 
 /**
@@ -22,6 +23,15 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
 
     public ObjectProxy(Class<T> clazz) {
         this.clazz = clazz;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T newProxyInstance(Class<T> interfaceClass) {
+        return (T) Proxy.newProxyInstance(
+                interfaceClass.getClassLoader(),
+                new Class<?>[]{interfaceClass},
+                new ObjectProxy<T>(interfaceClass)
+        );
     }
 
     @Override

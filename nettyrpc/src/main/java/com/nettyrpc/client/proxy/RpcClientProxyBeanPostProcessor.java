@@ -1,6 +1,5 @@
 package com.nettyrpc.client.proxy;
 
-import com.nettyrpc.client.RpcClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -29,7 +28,7 @@ public class RpcClientProxyBeanPostProcessor implements BeanPostProcessor {
             if (rpcClientProxy != null) {
                 log.info("***********rpcClientProxy.{} init ok... {}",beanName,field.getType().getName());
                 if (rpcProxyMap.get(field.getType().getName())== null) {
-                    rpcProxyMap.put(field.getType().getName(),RpcClient.create(field.getType()));
+                    rpcProxyMap.put(field.getType().getName(), ObjectProxy.newProxyInstance(field.getType()));
                 }
                 try {
                     field.setAccessible(true);

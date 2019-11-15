@@ -65,7 +65,7 @@ package com.nettyrpc.registry;//package com.nettyrpc.registry;
 //        try {
 //            Stat s = zk.exists(Constant.ZK_REGISTRY_PATH, false);
 //            if (s == null) {
-//                zk.create(Constant.ZK_REGISTRY_PATH, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+//                zk.newProxyInstance(Constant.ZK_REGISTRY_PATH, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 //            }
 //        } catch (KeeperException e) {
 //            logger.error(e.toString());
@@ -77,8 +77,8 @@ package com.nettyrpc.registry;//package com.nettyrpc.registry;
 //    private void createNode(ZooKeeper zk, String data) {
 //        try {
 //            byte[] bytes = data.getBytes();
-//            String path = zk.create(Constant.ZK_DATA_PATH, bytes, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-//            logger.debug("create zookeeper node ({} => {})", path, data);
+//            String path = zk.newProxyInstance(Constant.ZK_DATA_PATH, bytes, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+//            logger.debug("newProxyInstance zookeeper node ({} => {})", path, data);
 //        } catch (KeeperException e) {
 //            logger.error("", e);
 //        }

@@ -25,7 +25,7 @@ package com.nettyrpc.test.app;//package com.nettyrpc.test.app;
 //                @Override
 //                public void run() {
 //                    for (int i = 0; i < requestNum; i++) {
-//                        final HelloService syncClient = rpcClient.create(HelloService.class);
+//                        final HelloService syncClient = rpcClient.newProxyInstance(HelloService.class);
 //                        String result = syncClient.hello(Integer.toString(i));
 //
 //                        if (!result.equals("Hello! " + i))

@@ -45,15 +45,6 @@ public class RpcClient {
         ConnectManage.getInstance().setRpcClientOptions(this.rpcClientOptions);
     }
 
-    @SuppressWarnings("unchecked")
-    public static <T> T create(Class<T> interfaceClass) {
-        return (T) Proxy.newProxyInstance(
-                interfaceClass.getClassLoader(),
-                new Class<?>[]{interfaceClass},
-                new ObjectProxy<T>(interfaceClass)
-        );
-    }
-
     public static <T> IAsyncObjectProxy createAsync(Class<T> interfaceClass) {
         return new ObjectProxy<T>(interfaceClass);
     }

@@ -45,7 +45,7 @@ public class CustomThreadFactory implements ThreadFactory {
         Thread t = new FastThreadLocalThread(group, r, name, 0);
         t.setDaemon(true);
         t.setPriority(Thread.NORM_PRIORITY);
-        log.info("create thread:{}", name);
+        log.info("newProxyInstance thread:{}", name);
         return t;
     }
 

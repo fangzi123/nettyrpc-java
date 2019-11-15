@@ -2,8 +2,8 @@ package com.nettyrpc.test.app;
 
 import com.nettyrpc.client.RPCFuture;
 import com.nettyrpc.client.RpcClient;
-import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.client.proxy.IAsyncObjectProxy;
+import com.nettyrpc.client.proxy.ObjectProxy;
 import com.nettyrpc.client.proxy.RpcClientProxy;
 import com.nettyrpc.test.client.PersonService;
 import com.nettyrpc.test.client.HelloService;
@@ -36,7 +36,7 @@ public class ServiceTest {
     PersonService personService;
     @Test
     public void helloTest1() {
-        //HelloService helloService = RpcClient.create(HelloService.class);
+        //HelloService helloService = RpcClient.newProxyInstance(HelloService.class);
         String result = helloService.hello("World");
         log.info("result============={}",result);
         Assert.assertEquals("Hello! World", result);
@@ -44,7 +44,7 @@ public class ServiceTest {
 
     @Test
     public void helloTest2() {
-       // HelloService helloService = rpcClient.create(HelloService.class);
+       // HelloService helloService = rpcClient.newProxyInstance(HelloService.class);
         Person person = new Person("Yong", "Huang");
         String result = helloService.hello(person);
         Assert.assertEquals("Hello! Yong Huang", result);
@@ -52,7 +52,7 @@ public class ServiceTest {
 
     @Test
     public void helloPersonTest() {
-        PersonService personService = rpcClient.create(PersonService.class);
+        PersonService personService = ObjectProxy.newProxyInstance(PersonService.class);
         int num = 5;
         List<Person> persons = personService.GetTestPerson("xiaoming", num);
         List<Person> expectedPersons = new ArrayList<>();
