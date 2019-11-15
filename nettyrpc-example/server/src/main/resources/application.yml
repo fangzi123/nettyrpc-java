@@ -25,8 +25,8 @@ pagehelper:
 nettyrpc:
   server:
       enable: true
-#  registryAddress: list://127.0.0.1:18080
-  registryAddress: nacos://127.0.0.1:8848
+  registryAddress: list://127.0.0.1:18080
+#  registryAddress: nacos://127.0.0.1:8848
   serviceId: nettyrpc-server
   serverHost: 127.0.0.1
   serverPort: 18080

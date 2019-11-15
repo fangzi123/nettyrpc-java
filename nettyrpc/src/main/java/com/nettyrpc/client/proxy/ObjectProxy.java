@@ -36,22 +36,24 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (Object.class == method.getDeclaringClass()) {
-            String name = method.getName();
-            if ("equals".equals(name)) {
-                return proxy == args[0];
-            } else if ("hashCode".equals(name)) {
-                return System.identityHashCode(proxy);
-            } else if ("toString".equals(name)) {
-                return proxy.getClass().getName() + "@" +
-                        Integer.toHexString(System.identityHashCode(proxy)) +
-                        ", with InvocationHandler " + this;
-            } else {
-                throw new IllegalStateException(String.valueOf(method));
-            }
-        }
+        Invocation invocation = new Invocation(clazz,method,args);
+        return invocation.process();
+//        if (Object.class == method.getDeclaringClass()) {
+//            String name = method.getName();
+//            if ("equals".equals(name)) {
+//                return proxy == args[0];
+//            } else if ("hashCode".equals(name)) {
+//                return System.identityHashCode(proxy);
+//            } else if ("toString".equals(name)) {
+//                return proxy.getClass().getName() + "@" +
+//                        Integer.toHexString(System.identityHashCode(proxy)) +
+//                        ", with InvocationHandler " + this;
+//            } else {
+//                throw new IllegalStateException(String.valueOf(method));
+//            }
+//        }
 
-        RpcRequest request = new RpcRequest();
+      /*  RpcRequest request = new RpcRequest();
         request.setRequestId(UUID.randomUUID().toString());
         request.setClassName(method.getDeclaringClass().getName());
         request.setMethodName(method.getName());
@@ -71,7 +73,7 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
         RpcClientHandler handler =loadBalance.selectInstance(ConnectManage.getInstance().getConnectedHandlers());
         //RpcClientHandler handler = ConnectManage.getInstance().chooseHandler();
         RPCFuture rpcFuture = handler.sendRequest(request);
-        return rpcFuture.get();
+        return rpcFuture.get();*/
     }
 
     @Override
