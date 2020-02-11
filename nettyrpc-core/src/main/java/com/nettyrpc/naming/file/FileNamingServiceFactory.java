@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2019 Baidu, Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this list except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.nettyrpc.naming.file;
+
+import com.nettyrpc.naming.NamingService;
+import com.nettyrpc.naming.NamingServiceFactory;
+import com.nettyrpc.naming.RegistryCenterAddress;
+import com.nettyrpc.naming.enums.NamingTypeEnum;
+
+public class FileNamingServiceFactory implements NamingServiceFactory {
+
+    @Override
+    public String getName() {
+        return NamingTypeEnum.FILE.getType();
+    }
+
+    @Override
+    public NamingService createNamingService(RegistryCenterAddress registryCenterAddress) {
+        String schema = registryCenterAddress.getSchema();
+        if (NamingTypeEnum.FILE.getType().equals(schema)) {
+            return new FileNamingService(registryCenterAddress);
+        } else {
+            throw new IllegalArgumentException("schema is not valid:" + schema);
+        }
+    }
+}

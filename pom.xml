@@ -15,6 +15,7 @@
         <module>nettyrpc-example</module>
         <module>nettyrpc-naming-zookeeper</module>
         <module>nettyrpc-naming-nacos</module>
+        <module>nettyrpc-core</module>
     </modules>
 
     <properties>
