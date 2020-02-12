@@ -27,7 +27,7 @@ public class RpcBootstrapWithoutSpring {
 
         RpcServer rpcServer = new RpcServer(host,port,options);
         HelloService helloService = new HelloServiceImpl();
-        rpcServer.addService("com.nettyrpc.test.client.HelloService", helloService);
+        rpcServer.addService("com.nettyrpc.test.api.HelloService", helloService);
         try {
             rpcServer.start();
         } catch (Exception ex) {
