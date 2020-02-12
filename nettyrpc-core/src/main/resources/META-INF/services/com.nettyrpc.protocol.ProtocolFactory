@@ -1,0 +1,3 @@
+com.nettyrpc.protocol.protostuff.ProtoStuffProtocolFactory
+com.nettyrpc.protocol.fastjson.FastJsonProtocolFactory
+com.nettyrpc.protocol.kyro.KryoProtocolFactory

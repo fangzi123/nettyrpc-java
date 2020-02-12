@@ -1,0 +1,2 @@
+com.nettyrpc.naming.list.ListNamingServiceFactory
+com.nettyrpc.naming.file.FileNamingServiceFactory

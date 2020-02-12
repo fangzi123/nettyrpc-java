@@ -1,10 +1,10 @@
 package com.nettyrpc.server;
 
+import com.nettyrpc.constant.Constant;
 import com.nettyrpc.interceptor.DefaultInterceptorChain;
 import com.nettyrpc.interceptor.InterceptorChain;
 import com.nettyrpc.protocol.RpcRequest;
 import com.nettyrpc.protocol.RpcResponse;
-import com.nettyrpc.registry.Constant;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;

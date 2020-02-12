@@ -36,7 +36,7 @@ public class ServiceTest {
     PersonService personService;
     @Test
     public void helloTest1() {
-        //HelloService helloService = RpcClient.newProxyInstance(HelloService.class);
+        HelloService helloService = ObjectProxy.newProxyInstance(HelloService.class);
         String result = helloService.hello("World");
         log.info("result============={}",result);
         Assert.assertEquals("Hello! World", result);

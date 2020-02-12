@@ -18,6 +18,7 @@ package com.nettyrpc.interceptor;
 
 import com.nettyrpc.protocol.RpcRequest;
 import com.nettyrpc.protocol.RpcResponse;
+import com.nettyrpc.server.RpcServer;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.reflect.FastClass;
 
