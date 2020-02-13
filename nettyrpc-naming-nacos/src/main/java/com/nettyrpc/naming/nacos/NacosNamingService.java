@@ -17,7 +17,6 @@
 package com.nettyrpc.naming.nacos;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingFactory;
 import com.alibaba.nacos.api.naming.listener.Event;
@@ -29,9 +28,7 @@ import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
-import com.nettyrpc.utils.HttpClientUtils;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;

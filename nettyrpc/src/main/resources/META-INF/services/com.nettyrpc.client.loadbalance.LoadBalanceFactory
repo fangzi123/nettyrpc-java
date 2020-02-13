@@ -1,2 +1,0 @@
-com.nettyrpc.client.loadbalance.roundrobin.RoundRobinLoadBalanceFactory
-com.nettyrpc.client.loadbalance.random.RandomLoadBalanceFactory

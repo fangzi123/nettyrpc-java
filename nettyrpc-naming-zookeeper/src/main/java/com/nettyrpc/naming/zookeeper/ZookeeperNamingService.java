@@ -22,7 +22,7 @@ import com.nettyrpc.client.RpcClientOptions;
 import com.nettyrpc.naming.NamingService;
 import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
-import com.nettyrpc.registry.Constant;
+import com.nettyrpc.constant.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
