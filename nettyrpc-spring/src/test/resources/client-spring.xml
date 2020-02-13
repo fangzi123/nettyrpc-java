@@ -11,8 +11,15 @@
     <context:property-placeholder location="classpath:rpc.properties"/>
 
 
-    <!--<bean id="rpcClient" class="com.nettyrpc.client.RpcClient">-->
-        <!--<constructor-arg name="registryCenterAddress" value="${registry.address}"/>-->
-    <!--</bean>-->
+    <bean id ="rpcClientOptions" class="com.nettyrpc.client.RpcClientOptions">
+        <property name="protocolType" value="1"/>
+        <property name="loadBalanceType" value="1"/>
+        <property name="serviceId" value="example"/>
+    </bean>
+
+    <bean id="rpcClient" class="com.nettyrpc.client.RpcClient">
+        <constructor-arg name="registryCenterAddress" value="${registry.address}"/>
+        <constructor-arg name="rpcClientOptions" ref="rpcClientOptions"/>
+    </bean>
 
 </beans>

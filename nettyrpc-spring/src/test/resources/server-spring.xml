@@ -11,13 +11,18 @@
 
     <context:property-placeholder location="classpath:rpc.properties"/>
 
-    <bean id="serviceRegistry" class="com.nettyrpc.registry.ServiceRegistry">
-        <constructor-arg name="registryAddress" value="${registry.address}"/>
+    <bean id="rpcServerOptions" class="com.nettyrpc.server.RpcServerOptions">
+        <property name="namingServiceUrl" value="list://127.0.0.1:18866"/>
     </bean>
 
     <bean id="rpcServer" class="com.nettyrpc.server.RpcServer">
-        <constructor-arg name="serverAddress" value="${server.address}"/>
-        <constructor-arg name="serviceRegistry" ref="serviceRegistry"/>
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="18866"/>
+        <constructor-arg name="options" ref="rpcServerOptions"/>
+    </bean>
+
+    <bean id="rpcServiceExporter" class="com.nettyrpc.server.RpcServiceExporter">
+        <property name="rpcServer" ref="rpcServer"/>
     </bean>
 
 </beans>

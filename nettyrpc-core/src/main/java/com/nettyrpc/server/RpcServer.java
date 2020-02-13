@@ -52,7 +52,7 @@ public class RpcServer {
     private RpcServerOptions rpcServerOptions = new RpcServerOptions();
 
     public static List<Interceptor> interceptors = new ArrayList<Interceptor>();
-    public static Map<String, Object> handlerMap = new HashMap<>();
+    public static Map<String, Object> handlerMap = new HashMap<String, Object>();
 
     private static ThreadPoolExecutor threadPoolExecutor;
 
@@ -77,6 +77,7 @@ public class RpcServer {
         }
         interceptors.add(new ServerInvokeInterceptor());
     }
+
 
     public void stop() {
         if (bossGroup != null) {
