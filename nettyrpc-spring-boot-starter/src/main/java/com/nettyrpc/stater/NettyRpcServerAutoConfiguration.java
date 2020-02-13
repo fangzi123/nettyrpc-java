@@ -3,6 +3,7 @@ package com.nettyrpc.stater;
 import com.nettyrpc.interceptor.ServerCurrentLimitInterceptor;
 import com.nettyrpc.server.RpcServer;
 import com.nettyrpc.server.RpcServerOptions;
+import com.nettyrpc.server.RpcServiceExporter;
 import com.nettyrpc.server.currentlimit.CounterCurrentLimiter;
 import com.nettyrpc.server.currentlimit.CurrentLimiter;
 import com.nettyrpc.server.currentlimit.TokenBucketCurrentLimiter;
@@ -54,5 +55,10 @@ public class NettyRpcServerAutoConfiguration {
     @Bean
     public RpcServer rpcServer(RpcServerOptions rpcServerOptions) {
         return new RpcServer(properties.getServerHost(),properties.getServerPort(),rpcServerOptions);
+    }
+
+    @Bean
+    public RpcServiceExporter rpcServiceExporter(RpcServer rpcServer) {
+        return new RpcServiceExporter(rpcServer);
     }
 }

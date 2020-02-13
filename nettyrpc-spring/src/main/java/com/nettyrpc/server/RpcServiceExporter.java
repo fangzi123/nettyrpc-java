@@ -1,6 +1,8 @@
 package com.nettyrpc.server;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
@@ -19,6 +21,8 @@ import java.util.Map;
 @Setter
 @Getter
 @Slf4j
+@NoArgsConstructor
+@AllArgsConstructor
 public class RpcServiceExporter implements ApplicationContextAware, InitializingBean,DisposableBean {
 
     private RpcServer rpcServer;
