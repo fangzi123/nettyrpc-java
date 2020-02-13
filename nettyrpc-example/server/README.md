@@ -9,7 +9,7 @@ SpringBoot环境：
 <dependency>
     <groupId>com.nettyrpc</groupId>
     <artifactId>nettyrpc-spring-boot-starter</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 注册发现中心：
