@@ -3,13 +3,13 @@
 nettyrpc-java 是 rpc的java版实现，支持 kryo、protostuff、fastjson序列化协议。
 
 # 核心功能点
-* 支持 protostuff、fastjson、kryo 序列化协议。
+* 支持 TCP+protostuff/fastjson/kryo协议。
 * 支持 SpringBoot starter。
 * 支持多种naming服务，比如List、File、nacos、Zookeeper。
     可以灵活扩展支持 etcd、eureka、DNS、Consul等。
 * 支持多种负载均衡策略，比如random、round robin。
 * 支持interceptor功能，支持计数器、令牌桶等server端限流算法。
-* rpc功能依赖Spring。不强依赖注册中心。
+* rpc功能可独立使用，不是必须依赖Spring和注册中心功能。
 * 基于SPI机制可灵活扩展Protocol、NamingService和LoadBalance。
 ### Design:
 ![design](https://images2015.cnblogs.com/blog/434101/201603/434101-20160316102651631-1816064105.png)
@@ -24,7 +24,7 @@ SpringBoot环境：
 <dependency>
     <groupId>com.nettyrpc</groupId>
     <artifactId>nettyrpc-spring-boot-starter</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 注册发现中心(list与file不需要)：
