@@ -80,9 +80,9 @@ public class ConsulNamingService implements NamingService {
             newService.setPort(registerInfo.getPort());
             newService.setName(registerInfo.getServiceId());
             NewService.Check check = new NewService.Check();
-//            check.setHttp(registerInfo.getHostPort());
+            check.setHttp(registerInfo.getHostPort());
             check.setTcp(registerInfo.getHostPort());
-            check.setInterval("5s");
+            check.setInterval("30s");
             newService.setCheck(check);
             consul.agentServiceRegister(newService);
         }
