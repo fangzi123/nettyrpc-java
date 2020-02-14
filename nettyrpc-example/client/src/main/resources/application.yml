@@ -8,9 +8,10 @@ server:
 nettyrpc:
   client:
     enable: true
-#  registryAddress: nacos://127.0.0.1:8848
   serviceId: nettyrpc-server
-  registryAddress: list://127.0.0.1:18080
+#  registryAddress: list://127.0.0.1:18080
 #  registryAddress: file://conf/server_list.conf
+#  registryAddress: nacos://127.0.0.1:8848
+  registryAddress: consul://127.0.0.1:8500
   protocolType: 3
   loadBalanceType: 0
