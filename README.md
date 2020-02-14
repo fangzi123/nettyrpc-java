@@ -5,8 +5,8 @@ nettyrpc-java 是 rpc的java版实现，支持 kryo、protostuff、fastjson序�
 # 核心功能点
 * 支持 TCP+protostuff/fastjson/kryo协议。
 * 支持 SpringBoot starter。
-* 支持多种naming服务，比如List、File、nacos、Zookeeper。
-    可以灵活扩展支持 etcd、eureka、DNS、Consul等。
+* 支持多种naming服务，已支持List、File、nacos、Zookeeper、Consul。
+    可以灵活扩展支持 etcd、eureka、DNS等。
 * 支持多种负载均衡策略，比如random、round robin。
 * 支持interceptor功能，支持计数器、令牌桶等server端限流算法。
 * rpc功能可独立使用，不是必须依赖Spring和注册中心功能。
@@ -58,3 +58,5 @@ zookeeper：
 * https://www.cnblogs.com/luxiaoxun/p/5272384.html
 * https://github.com/luxiaoxun/NettyRpc
 * https://github.com/baidu/brpc-java
+* https://www.cnblogs.com/duanxz/p/9661932.html
+* https://www.cnblogs.com/ASPNET2008/p/6892137.html
