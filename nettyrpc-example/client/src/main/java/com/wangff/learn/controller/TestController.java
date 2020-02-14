@@ -14,7 +14,7 @@ public class TestController {
     HelloService helloService;
 
 
-    @RequestMapping(value = "/helloTest1")
+    @RequestMapping(value = "/test")
     public String helloTest1() {
         StopWatch stopWatch = new StopWatch();
 //        HelloService helloService = ObjectProxy.newProxyInstance(HelloService.class);
