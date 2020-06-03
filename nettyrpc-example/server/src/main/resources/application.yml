@@ -25,12 +25,12 @@ pagehelper:
 nettyrpc:
   server:
       enable: true
-  registryAddress: list://127.0.0.1:18080
-#  registryAddress: nacos://127.0.0.1:8848
+#  registryAddress: list://127.0.0.1:18080
+  registryAddress: nacos://127.0.0.1:8848
 #  registryAddress: consul://127.0.0.1:8500
   serviceId: nettyrpc-server
   serverHost: 127.0.0.1
   serverPort: 18080
-  protocolType: 3
+  protocolType: 1
   tokenBucketSize: 1000
   tokenInputRate: 1000

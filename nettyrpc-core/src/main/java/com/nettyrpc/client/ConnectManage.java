@@ -129,8 +129,8 @@ public class ConnectManage {
         connectServerNode((InetSocketAddress) remotePeer);
     }*/
     public void reconnect(final SocketAddress remotePeer) {
-        connectedHandlers.clear();
-        connectedServerNodes.clear();
+        connectedHandlers.remove(connectedServerNodes.get(remotePeer));
+        connectedServerNodes.remove(remotePeer);
         connectServerNode((InetSocketAddress) remotePeer);
     }
     public void connectServerNode(final InetSocketAddress remotePeer) {
@@ -151,17 +151,18 @@ public class ConnectManage {
                             RpcClientHandler handler = channelFuture.channel().pipeline().get(RpcClientHandler.class);
                             addHandler(handler);
                         }else{
-                            /**
-                             * 断线重连
-                             */
-                            final EventLoop loop = channelFuture.channel().eventLoop();
-                            loop.schedule(new Runnable() {
-                                @Override
-                                public void run() {
-                                    logger.error("服务端链接不上，开始重连操作...");
-                                    reconnect(remotePeer);
-                                }
-                            }, 1L, TimeUnit.SECONDS);
+                            logger.error("服务端链接失败...{}",System.currentTimeMillis());
+//                            /**
+//                             * 断线重连
+//                             */
+//                            final EventLoop loop = channelFuture.channel().eventLoop();
+//                            loop.schedule(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    logger.error("服务端链接不上，开始重连操作...");
+//                                    reconnect(remotePeer);
+//                                }
+//                            }, 1L, TimeUnit.SECONDS);
                         }
                     }
                 });

@@ -48,6 +48,7 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
         eventLoop.schedule(new Runnable() {
             @Override
             public void run() {
+                logger.error("11服务端链接不上，开始重连操作...");
                 ConnectManage.getInstance().reconnect(remotePeer);
             }
         }, 1, TimeUnit.SECONDS);
