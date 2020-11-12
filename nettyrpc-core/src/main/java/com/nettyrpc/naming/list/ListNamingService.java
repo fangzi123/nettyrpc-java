@@ -22,6 +22,8 @@ import com.nettyrpc.naming.RegisterInfo;
 import com.nettyrpc.naming.RegistryCenterAddress;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public class ListNamingService implements NamingService {
 
     @Override
     public void subscribe(RpcClientOptions rpcClientOptions) {
-        List<String> dataList = List.of(registryCenterAddress.getHostPorts().split(","));
+        List<String> dataList = Arrays.asList(registryCenterAddress.getHostPorts().split(","));
         ConnectManage.getInstance().updateConnectedServer(dataList);
     }
 

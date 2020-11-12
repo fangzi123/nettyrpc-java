@@ -23,6 +23,7 @@ import com.nettyrpc.naming.RegistryCenterAddress;
 import com.nettyrpc.utils.PropertyUtils;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -40,7 +41,7 @@ public class FileNamingService implements NamingService {
 
     @Override
     public void subscribe(RpcClientOptions rpcClientOptions) {
-        List<String> dataList = List.of(PropertyUtils.get("server").split(","));
+        List<String> dataList = Arrays.asList(PropertyUtils.get("server").split(","));
         ConnectManage.getInstance().updateConnectedServer(dataList);
     }
 

@@ -1,11 +1,12 @@
 package com.wangff.learn;
 
+import com.nettyrpc.stater.EnableRpcServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import tk.mybatis.spring.annotation.MapperScan;
-
+//import tk.mybatis.spring.annotation.MapperScan;
+@EnableRpcServer
 @SpringBootApplication
-@MapperScan("com.wangff.learn.mapper")
+//@MapperScan("com.wangff.learn.mapper")
 public class RpcBootstrap {
 
     public static void main(String[] args) {

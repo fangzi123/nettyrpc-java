@@ -1,5 +1,6 @@
 package com.nettyrpc.stater;
 
+import com.nettyrpc.interceptor.Interceptor;
 import com.nettyrpc.interceptor.ServerCurrentLimitInterceptor;
 import com.nettyrpc.server.RpcServer;
 import com.nettyrpc.server.RpcServerOptions;
@@ -13,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +22,7 @@ import java.util.List;
  * @date 2019/9/20 16:09
  */
 @Configuration
-@ConditionalOnProperty(prefix = "nettyrpc.server", name = "enable", havingValue = "true")
+//@ConditionalOnProperty(prefix = "nettyrpc.server", name = "enable", havingValue = "true")
 @EnableConfigurationProperties(ServerFrameProperties.class)
 public class NettyRpcServerAutoConfiguration {
 
@@ -48,7 +50,9 @@ public class NettyRpcServerAutoConfiguration {
         rpcServerOptions.setProtocolType(properties.getProtocolType());
         rpcServerOptions.setServiceId(properties.getServiceId());
 
-        rpcServerOptions.setInterceptors(List.of(serverCurrentLimitInterceptor));
+        List<Interceptor> interceptorList = new ArrayList<>();
+        interceptorList.add(serverCurrentLimitInterceptor);
+        rpcServerOptions.setInterceptors(interceptorList);
         return rpcServerOptions;
     }
 
